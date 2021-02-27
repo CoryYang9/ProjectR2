@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_002112) do
+ActiveRecord::Schema.define(version: 2021_02_19_233129) do
+
+# Could not dump table "comments" because of following StandardError
+#   Unknown type 'user_id' for column 'user_id'
+
+# Could not dump table "photos" because of following StandardError
+#   Unknown type 'user' for column 'user_id'
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"

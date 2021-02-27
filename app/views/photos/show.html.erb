@@ -1,0 +1,38 @@
+<h1><%= @user.first_name + " " + @user.last_name + "'s photos"%></h1>
+
+<% @photos.each do |photo|%>
+  <script>
+      var myImage = new Image(250, );
+      var a = '/assets/'
+      var b = "<%= photo.file_name %>"
+      var c = a.concat(b)
+      myImage.src = c;
+      document.body.appendChild(myImage);
+  </script>
+  <br/>
+  <%= photo.file_name %>
+  <br/>
+  <table>
+    <tr class = "header" >
+      <td>Name</td>
+      <td>Date</td>
+      <td>Comment</td>
+    </tr>
+
+    <% @comments.each do |comment|%>
+      <%if comment.photo_id==photo.id %>
+        <tr>
+          <% @users.each do |user| %>
+            <%if user.id==comment.user_id %>
+              <td><%= link_to user.first_name + " " + user.last_name, photo_path(user)%></td>
+            <%end%>
+          <%end%>
+          <td><%= comment.date_time %></td>
+          <td><%= comment.text %></td>
+        </tr>
+      <%end%>
+    <% end %>
+  </table>
+  <br/>
+<% end %>
+

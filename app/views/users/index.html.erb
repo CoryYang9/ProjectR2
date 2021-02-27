@@ -1,0 +1,16 @@
+<h1>Index</h1>
+<table>
+  <tr class = "header" >
+    <td>ID</td>
+    <td>First Name</td>
+    <td>Last Name</td>
+  </tr>
+
+  <% @users.each do |user|%>
+    <tr>
+      <td><%= link_to user.id, photo_path(user)%></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+    </tr>
+  <% end %>
+</table>
