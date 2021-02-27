@@ -13,4 +13,4 @@ ENTRYPOINT [ "/bin/bash" ]
 
 #docker build
 #docker-compose up -d
-#docker-compose rails server -p 3000 -b 0.0.0.0
+#rails server -p 3000 -b 0.0.0.0
