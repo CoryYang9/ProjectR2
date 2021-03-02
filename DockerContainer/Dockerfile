@@ -1,4 +1,4 @@
-FROM ruby
+FROM ruby:2.7.2
 
 WORKDIR /home/app
 
@@ -8,9 +8,12 @@ EXPOSE $PORT
 
 RUN gem install rails bundler
 RUN gem install rails
+RUN apt-get update -qq && apt-get install -y nodejs
 
-ENTRYPOINT [ "/bin/bash" ]
+WORKDIR /app
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 
-#docker build
-#docker-compose up -d
-#rails server -p 3000 -b 0.0.0.0
+RUN bundle update && bundle install
+
+COPY . /app
